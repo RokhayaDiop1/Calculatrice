@@ -1,88 +1,139 @@
- body {
-      background: linear-gradient(135deg, #df6bff, #000dff);
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      margin-top: 60px;
-    }
+/* 🌈 Style général */
+body {
+  background: linear-gradient(135deg, #df6bff, #000dff);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
 
-    .calculator {
-      background: #ffffff;
-      display: inline-block;
-      padding: 30px 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      color: #000;
-    }
+/* 🧮 Bloc calculatrice */
+.calculator {
+  background: #ffffff;
+  display: inline-block;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  color: #000;
+  max-width: 90vw; /* 👈 empêche de dépasser l'écran */
+  box-sizing: border-box;
+}
 
-    h1 {
-      color: #000000;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+/* 🏷️ Titre */
+h1 {
+  color: #000000;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
-    .result {
-      background: #f0f0f0;
-      color: #000;
-      font-size: 20px;
-      font-weight: bold;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      text-align: right;
-      width: 320px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
+/* 🧾 Zone du résultat */
+.result {
+  background: #f0f0f0;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: right;
+  width: 320px;
+  max-width: 100%; /* 👈 s'adapte à la largeur de l'écran */
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
 
-    input[type="text"] {
-      width: 320px;
-      padding: 10px;
-      font-size: 22px;
-      text-align: right;
-      border: none;
-      border-radius: 8px;
-      background: #f9f9f9;
-      color: #000;
-      margin-bottom: 15px;
-      box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
-    }
+/* 🖊️ Zone de saisie */
+input[type="text"] {
+  width: 320px;
+  max-width: 100%; /* 👈 important pour mobile */
+  padding: 10px;
+  font-size: 22px;
+  text-align: right;
+  border: none;
+  border-radius: 8px;
+  background: #f9f9f9;
+  color: #000;
+  margin-bottom: 15px;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+}
 
-    #buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 70px);
-      gap: 10px;
-      justify-content: center;
-    }
+/* 🎛️ Boutons */
+#buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 70px);
+  gap: 10px;
+  justify-content: center;
+}
 
-    button {
-      background: #1e90ff;
-      color: white;
-      border: none;
-      font-size: 18px;
-      padding: 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+button {
+  background: #1e90ff;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
-    button:hover {
-      background: #104e8b;
-    }
+button:hover {
+  background: #104e8b;
+}
 
-    button.egal {
-      grid-column: span 4;
-      background: linear-gradient(135deg, #df6bff, #000dff);
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 20px;
-    }
+/* 🟣 Bouton "=" */
+button.egal {
+  grid-column: span 4;
+  background: linear-gradient(135deg, #df6bff, #000dff);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+}
 
-    button.egal:hover {
-      background:#000dff;
-      color: white;
-    }
+button.egal:hover {
+  background: #000dff;
+  color: white;
+}
+
+/* 📱 Responsive Design (mobile et tablette) */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  .calculator {
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  input[type="text"],
+  .result {
+    font-size: 18px;
+    width: 100%;
+  }
+
+  #buttons {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  button.egal {
+    font-size: 18px;
+  }
+}
