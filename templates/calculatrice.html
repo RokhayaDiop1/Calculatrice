@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculatrice Combinée</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="calculator">
+    <h1><i class="fa-solid fa-calculator"></i> Calculatrice</h1>
+
+    {% if result is not none %}
+    <div class="result">{{ result }}</div>
+    {% endif %}
+
+    <form action="/calculer" method="POST" id="calc-form">
+      <input type="text" id="expression" name="expression"
+              value="{{ expression if expression else '' }}" placeholder="0">
+      <input type="hidden" name="expression" id="hidden-expression">
+
+      <div id="buttons">
+        <!-- Ligne 1 -->
+        <button type="button" onclick="add('7')">7</button>
+        <button type="button" onclick="add('8')">8</button>
+        <button type="button" onclick="add('9')">9</button>
+        <button type="button" onclick="add('/')">÷</button>
+
+        <!-- Ligne 2 -->
+        <button type="button" onclick="add('4')">4</button>
+        <button type="button" onclick="add('5')">5</button>
+        <button type="button" onclick="add('6')">6</button>
+        <button type="button" onclick="add('*')">×</button>
+
+        <!-- Ligne 3 -->
+        <button type="button" onclick="add('1')">1</button>
+        <button type="button" onclick="add('2')">2</button>
+        <button type="button" onclick="add('3')">3</button>
+        <button type="button" onclick="add('-')">−</button>
+
+        <!-- Ligne 4 -->
+        <button type="button" onclick="add('0')">0</button>
+        <button type="button" onclick="add('.')">.</button>
+        <button type="button" onclick="clearExp()">C</button>
+        <button type="button" onclick="add('+')">+</button>
+
+        <!-- Ligne 5 -->
+        <button type="button" onclick="add('(')">(</button>
+        <button type="button" onclick="add(')')">)</button>
+        <button type="button" onclick="add('sqrt(')">√</button>
+        <button type="button" onclick="add('pow(')">xʸ</button>
+
+        <!-- Ligne 6 Scientifique -->
+        <button type="button" onclick="add('sin(')">sin</button>
+        <button type="button" onclick="add('cos(')">cos</button>
+        <button type="button" onclick="add('tan(')">tan</button>
+        <button type="button" onclick="add('log(')">log</button>
+
+        <button type="button" onclick="add('pi')">π</button>
+        <button type="button" onclick="add('e')">e</button>
+
+        <button type="submit" class="egal">=</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function add(val) {
+      document.getElementById('expression').value += val;
+    }
+    function clearExp() {
+      document.getElementById('expression').value = '';
+    }
+
+    document.getElementById('calc-form').onsubmit = function() {
+      document.getElementById('hidden-expression').value =
+        document.getElementById('expression').value;
+    };
+  </script>
+</body>
+</html>
